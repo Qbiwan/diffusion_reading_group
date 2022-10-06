@@ -113,7 +113,7 @@ $$\log{p_{\theta}(x)}  \geq E_{q_{(x_{1}|x_{0})}}\log{p_{\theta}(x_{0}|x_{1})} -
 
 Comparing both equations, we can see that biggest change went to  the consistency term, going from
 
-$\sum_{t=1}^{T-1}E_{q_{(x_{t-1}, x_{t+1}|x_{t})}}\log{\frac{q_{\lambda}(x_{t} |x_{t-1})}{p_{\theta}(x_{t} |x_{t+1})}}$ to  $\sum_{t=2}^{T}E_{q_{(x_{t}|x_{0})}}\log{\frac{q_{\lambda}(x_{t-1} |x_{t},x_{0})}{p_{\theta}(x_{t-1} |x_{t})}}$
+$$\sum_{t=1}^{T-1}E_{q_{(x_{t-1}, x_{t+1}|x_{t})}}\log{\frac{q_{\lambda}(x_{t} |x_{t-1})}{p_{\theta}(x_{t} |x_{t+1})}} \text{ to }  \sum_{t=2}^{T}E_{q_{(x_{t}|x_{0})}}\log{\frac{q_{\lambda}(x_{t-1} |x_{t},x_{0})}{p_{\theta}(x_{t-1} |x_{t})}}$$
 
 In contrast to taking expectation over two random variables ( $E_{q_{(x_{t-1}, x_{t+1}|x_{t})}}$ ), the reformulation allows us to do so over one random variable ( $E_{q_{(x_{t}|x_{0})}}$ ). Additionally, instead of getting the neural network  to learn the reverse process $p_{\theta}(x_{t} |x_{t+1})$ from the forward process $q_{\lambda}(x_{t} |x_{t-1})$, we now "reverse" the forward process to get the posterior distribution $q_{\lambda}(x_{t-1} |x_{t},x_{0})$, so that the neural network learns the reverse process $p_{\theta}(x_{t} |x_{t+1})$ from the "reversed" forward process $q_{\lambda}(x_{t-1} |x_{t},x_{0})$. In practical terms, we are denoising a noisy image by one reverse time-step, but we do so by showing the original image $x_{0}$       
 
